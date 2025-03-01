@@ -16,8 +16,8 @@ CFLAGS := -g -fno-inline-small-functions \
 	-O3
 LDFLAGS := -nostdlib -z max-page-size=0x1000
 
-LIBC_DIR := $(shell realpath ../libc/src/)
-KERNEL_DIR := $(shell realpath ../src/)
+LIBC_DIR ?= ../libc/src/
+KERNEL_DIR ?= ../src/
 
 INCLUDES := -Isrc/include -I$(LIBC_DIR)/include -I$(KERNEL_DIR)/include
 
