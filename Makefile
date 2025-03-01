@@ -16,11 +16,11 @@ CFLAGS := -g -fno-inline-small-functions \
 	-O3
 LDFLAGS := -nostdlib -z max-page-size=0x1000
 
-LIBC_DIR ?= ../libc/src/
-KERNEL_DIR ?= ../src/
-LIMINE_DIR ?= ../limine/
+LIBC_DIR ?= ../libc/src
+KERNEL_DIR ?= ../src
+LIMINE_DIR ?= ../limine
 
-INCLUDES := -Isrc/include -I$(LIBC_DIR)/include -I$(KERNEL_DIR)/include -I$(LIMINE_DIR)/include
+INCLUDES := -Isrc/include -I$(LIBC_DIR)/include -I$(KERNEL_DIR)/include -I$(LIMINE_DIR)/
 
 OBJ_DIR := build/obj
 
