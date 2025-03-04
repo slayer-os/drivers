@@ -1,7 +1,7 @@
 CFLAGS := -g -fno-inline-small-functions \
 	-Wall \
 	-Wextra \
-	-std=gnu11 \
+	-std=c++17 \
 	-ffreestanding \
 	-fno-stack-protector \
 	-fno-stack-check \
@@ -13,6 +13,7 @@ CFLAGS := -g -fno-inline-small-functions \
 	-mno-sse \
 	-mno-sse2 \
 	-mno-red-zone \
+	-Wno-pointer-arith \
 	-O3
 LDFLAGS := -nostdlib -z max-page-size=0x1000
 
@@ -38,11 +39,11 @@ $(DRIVERS_LIB): $(OBJECT_FILES)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	$(CXX) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.s
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CXX) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJ_DIR)

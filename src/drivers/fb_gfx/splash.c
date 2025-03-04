@@ -36,7 +36,7 @@ void draw_ascii_logo(u32 x, u32 y, u32 scale, u32 color) {
       " ##*##            #**#             ##**#    #        ",
       "                #**###################***####      ",
       "               #***************************#       ",
-      NULL
+      nullptr
   };
   
   int x_scale = scale;
