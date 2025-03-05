@@ -29,15 +29,15 @@ SRC_DIR := src/drivers
 DRIVERS_LIB := build/drivers.a
 
 
-SOURCE_FILES := $(shell find $(SRC_DIR) -name '*.c' -or -name '*.s')
-OBJECT_FILES := $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(patsubst $(SRC_DIR)/%.s, $(OBJ_DIR)/%.o, $(SOURCE_FILES)))
+SOURCE_FILES := $(shell find $(SRC_DIR) -name '*.cxx' -or -name '*.s')
+OBJECT_FILES := $(patsubst $(SRC_DIR)/%.cxx, $(OBJ_DIR)/%.o, $(patsubst $(SRC_DIR)/%.s, $(OBJ_DIR)/%.o, $(SOURCE_FILES)))
 
 all: $(DRIVERS_LIB)
 
 $(DRIVERS_LIB): $(OBJECT_FILES)
 	$(AR) rcs $@ $(OBJECT_FILES)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cxx
 	@mkdir -p $(@D)
 	$(CXX) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
