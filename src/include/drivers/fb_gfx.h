@@ -2,16 +2,23 @@
 #define FB_GFX_DRIVER_H
 #include <libc/types.h>
 
-void init_fb_gfx();
-void gfx_pixel(u32 x, u32 y, u32 color);
-void gfx_line(u32 x1, u32 y1, u32 x2, u32 y2, u32 color);
-void gfx_rect(u32 x, u32 y, u32 w, u32 h, u32 color);
-void gfx_fill_rect(u32 x, u32 y, u32 w, u32 h, u32 color);
-void gfx_fill(u32 color);
+namespace fb::gfx {
 
-u32 gfx_screen_width();
-u32 gfx_screen_height();
+  void init();
+  void pixel(u32 x, u32 y, u32 color);
+  void line(u32 x1, u32 y1, u32 x2, u32 y2, u32 color);
+  void rect(u32 x, u32 y, u32 w, u32 h, u32 color);
+  void fill_rect(u32 x, u32 y, u32 w, u32 h, u32 color);
+  void fill(u32 color);
+  
+  namespace screen {
+    u32 width();
+    u32 height();
+  }
 
-void draw_ascii_logo(u32 x, u32 y, u32 scale, u32 color);
+  namespace splash {
+    void ascii_logo(u32 x, u32 y, u32 scale, u32 color);
+  }
+}
 
 #endif

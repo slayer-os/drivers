@@ -6,12 +6,12 @@
 void draw_block(u32 x, u32 y, u32 color) {
   for (int i = 0; i < PIXEL_SIZE; i++) {
     for (int j = 0; j < PIXEL_SIZE; j++) {
-      gfx_pixel(x + j, y + i, color);
+      fb::gfx::pixel(x + j, y + i, color);
     }
   }
 }
 
-void draw_ascii_logo(u32 x, u32 y, u32 scale, u32 color) {
+void fb::gfx::splash::ascii_logo(u32 x, u32 y, u32 scale, u32 color) {
   const char *logo[] = {
       "                                          ######   ",
       "                                         #*###**#  ",
@@ -40,7 +40,7 @@ void draw_ascii_logo(u32 x, u32 y, u32 scale, u32 color) {
   };
   
   int x_scale = scale;
-  int y_scale = scale * (gfx_screen_width() / gfx_screen_height());
+  int y_scale = scale * (fb::gfx::screen::width() / fb::gfx::screen::height());
   for (int row = 0; logo[row] != NULL; row++) {
     for (int col = 0; logo[row][col] != '\0'; col++) {
       if (logo[row][col] != ' ') {
