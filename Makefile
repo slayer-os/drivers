@@ -17,11 +17,11 @@ CFLAGS := -g -fno-inline-small-functions \
 	-O3
 LDFLAGS := -nostdlib -z max-page-size=0x1000
 
-LIBC_DIR ?= ../libc/src
+KLIB_DIR ?= ../klib/src
 KERNEL_DIR ?= ../src
 LIMINE_DIR ?= ../limine
 
-INCLUDES := -Isrc/include -I$(LIBC_DIR)/include -I$(KERNEL_DIR)/include -I$(LIMINE_DIR)/
+INCLUDES := -Isrc/include -I$(KLIB_DIR)/include -I$(KERNEL_DIR)/include -I$(LIMINE_DIR)/
 
 OBJ_DIR := build/obj
 
@@ -29,21 +29,21 @@ SRC_DIR := src/drivers
 DRIVERS_LIB := build/drivers.a
 
 
-SOURCE_FILES := $(shell find $(SRC_DIR) -name '*.cxx' -or -name '*.s')
-OBJECT_FILES := $(patsubst $(SRC_DIR)/%.cxx, $(OBJ_DIR)/%.o, $(patsubst $(SRC_DIR)/%.s, $(OBJ_DIR)/%.o, $(SOURCE_FILES)))
+SOURCE_FILES := $(shell find $(SRC_DIR) -name '*.cc' -or -name '*.s')
+OBJECT_FILES := $(patsubst $(SRC_DIR)/%.cc, $(OBJ_DIR)/%.o, $(patsubst $(SRC_DIR)/%.s, $(OBJ_DIR)/%.o, $(SOURCE_FILES)))
 
 all: $(DRIVERS_LIB)
 
 $(DRIVERS_LIB): $(OBJECT_FILES)
 	$(AR) rcs $@ $(OBJECT_FILES)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cxx
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cc
 	@mkdir -p $(@D)
-	$(CXX) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.s
 	@mkdir -p $(@D)
-	$(CXX) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJ_DIR)

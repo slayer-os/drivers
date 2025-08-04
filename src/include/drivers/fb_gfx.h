@@ -1,6 +1,4 @@
-#ifndef FB_GFX_DRIVER_H
-#define FB_GFX_DRIVER_H
-#include <libc/types.h>
+#include <klib/types.h>
 
 namespace fb::gfx {
 
@@ -21,4 +19,3 @@ namespace fb::gfx {
   }
 }
 
-#endif

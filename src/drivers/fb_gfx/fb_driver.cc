@@ -1,7 +1,7 @@
 #include <drivers/fb_gfx.h>
 #include <bootloader/limine.h>
-#include <libc/assert.h>
-#include <libc/math.h>
+#include <klib/assert.h>
+#include <klib/math.h>
 
 struct limine_framebuffer *l_framebuffer;
 void *fb_addr;
