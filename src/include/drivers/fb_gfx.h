@@ -1,6 +1,7 @@
+#pragma once
 #include <klib/types.h>
 
-namespace fb::gfx {
+namespace Drivers::fb::gfx {
 
   void init();
   void pixel(u32 x, u32 y, u32 color);
@@ -16,6 +17,7 @@ namespace fb::gfx {
 
   namespace splash {
     void ascii_logo(u32 x, u32 y, u32 scale, u32 color);
+    void sevastolink(u8 perc);
   }
 }
 

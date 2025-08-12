@@ -18,10 +18,15 @@ CFLAGS := -g -fno-inline-small-functions \
 LDFLAGS := -nostdlib -z max-page-size=0x1000
 
 KLIB_DIR ?= ../klib/src
+FLANTERM_DIR ?= ../deps/flanterm/src
 KERNEL_DIR ?= ../src
-LIMINE_DIR ?= ../limine
+LIMINE_DIR ?= ../deps/limine
 
-INCLUDES := -Isrc/include -I$(KLIB_DIR)/include -I$(KERNEL_DIR)/include -I$(LIMINE_DIR)/
+INCLUDES := -Isrc/include \
+						-I$(KLIB_DIR)/include \
+						-I$(KERNEL_DIR)/include \
+						-I$(LIMINE_DIR)/ \
+						-I$(FLANTERM_DIR)/
 
 OBJ_DIR := build/obj
 
